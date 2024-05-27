@@ -40,8 +40,6 @@ public class AuthFilter extends AbstractGatewayFilterFactory<AuthFilter.Config> 
                     }).flatMap(chain::filter);
         }));
     }
-
-
     public Mono<Void> onError(ServerWebExchange exchange, HttpStatus status){
         ServerHttpResponse response = exchange.getResponse();
         response.setStatusCode(status);
@@ -53,3 +51,4 @@ public class AuthFilter extends AbstractGatewayFilterFactory<AuthFilter.Config> 
 
 
 }
+

@@ -1,18 +1,25 @@
-package pe.upeu.auth.service.impl;
+package com.example.msauth.service.impl;
 
-import pe.upeu.auth.dto.AuthUserDto;
 
-import pe.upeu.auth.entity.AuthUser;
+import com.example.msauth.dto.AuthUserDto;
+import com.example.msauth.entity.AuthUser;
+import com.example.msauth.entity.TokenDto;
 
-import pe.upeu.auth.entity.TokenDto;
-import pe.upeu.auth.repository.AuthRepository;
-import pe.upeu.auth.security.JwtProvider;
-import pe.upeu.auth.service.AuthUserService;
+
+import com.example.msauth.repository.AuthRepository;
+import com.example.msauth.security.JwtProvider;
+import com.example.msauth.service.AuthUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+
+
+
 import java.util.Optional;
+
+
+
 
 @Service
 public class AuthUserServiceImpl implements AuthUserService {
@@ -22,6 +29,7 @@ public class AuthUserServiceImpl implements AuthUserService {
     PasswordEncoder passwordEncoder;
     @Autowired
     JwtProvider jwtProvider;
+
 
     @Override
     public AuthUser save(AuthUserDto authUserDto) {
@@ -34,8 +42,14 @@ public class AuthUserServiceImpl implements AuthUserService {
                 .password(password)
                 .build();
 
+
+
+
         return authRepository.save(authUser);
     }
+
+
+
 
     @Override
     public TokenDto login(AuthUserDto authUserDto) {
@@ -47,14 +61,16 @@ public class AuthUserServiceImpl implements AuthUserService {
         return null;
     }
 
+
+
+
     @Override
     public TokenDto validate(String token) {
-       if (!jwtProvider.validate(token))
+        if (!jwtProvider.validate(token))
             return null;
         String username = jwtProvider.getUserNameFromToken(token);
         if (!authRepository.findByUserName(username).isPresent())
             return null;
-
         return new TokenDto(token);
     }
 }

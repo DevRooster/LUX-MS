@@ -1,4 +1,4 @@
-package pe.upeu.auth.security;
+package com.example.msauth.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,3 +11,4 @@ public class PasswordEncoderConfig {
         return new BCryptPasswordEncoder();
     }
 }
+
