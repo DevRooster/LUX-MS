@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.3.0</version>
+		<version>3.2.6</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
@@ -16,7 +16,7 @@
 	<description>Puerta de Enlace</description>
 	<properties>
 		<java.version>17</java.version>
-		<spring-cloud.version>2022.0.3</spring-cloud.version> <!-- Actualizado a la versión compatible más reciente -->
+		<spring-cloud.version>2023.0.2</spring-cloud.version> <!-- Actualizado a la versión compatible más reciente -->
 	</properties>
 	<dependencies>
 		<dependency>

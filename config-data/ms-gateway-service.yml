@@ -20,3 +20,5 @@ spring:
           uri: lb://ms-auth-service
           predicates:
             - Path=/auth/**
+          filters:
+            - AuthFilter
