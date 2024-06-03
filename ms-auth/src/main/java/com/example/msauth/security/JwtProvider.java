@@ -3,16 +3,14 @@ package com.example.msauth.security;
 import com.example.msauth.entity.AuthUser;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
-import javax.annotation.PostConstruct;
 import java.util.Base64;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-@Component
-public class JwtProvider    {
+public class JwtProvider {
     @Value("${jwt.secret}")
     private String secret;
 
@@ -38,16 +36,11 @@ public class JwtProvider    {
     public boolean validate(String token) {
         try {
             Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
-
-
             return true;
         }catch (Exception e){
             return false;
         }
     }
-
-
-
 
     public String getUserNameFromToken(String token){
         try {
